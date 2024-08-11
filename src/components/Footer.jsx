@@ -8,7 +8,7 @@ export default function Footer() {
       <img src={logo} alt="Miaudote logo" />
       <p>
         Developed with React
-        <p> <Link to="http://localhost:5173">Contact us</Link>
+        <p> <Link to="linkedin.com/in/sidhanbir-singh-093ba7228">Contact us</Link>
       </p></p>
     </FooterContainer>
   );

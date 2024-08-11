@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In Form</title>
+<style>
+  .error {
+    color: red;
+  }
+</style>
+</head>
+<body>
+
+<form id="signInForm" onsubmit="return validateForm()">
+  <label for="username">Username:</label><br>
+  <input type="text" id="username" name="username" required><br><br>
+
+  <label for="password">Password:</label><br>
+  <input type="password" id="password" name="password" required><br>
+  <span id="passwordError" class="error"></span><br>
+
+  <input type="submit" value="Sign In">
+</form>
+
+<script>
+function validateForm() {
+  var password = document.getElementById("password").value;
+  var passwordError = document.getElementById("passwordError");
+
+  // Regular expressions for each requirement
+  var lengthRegex = /^.{8,15}$/;
+  var digitRegex = /\d/;
+  var upperCaseRegex = /[A-Z]/;
+  var lowerCaseRegex = /[a-z]/;
+  var specialCharRegex = /[!@#$%&*()-+=^]/;
+  var whiteSpaceRegex = /\s/;
+
+  // Check if password meets all requirements
+  if (!lengthRegex.test(password)) {
+    passwordError.innerHTML = "Password must be between 8 and 15 characters long.";
+    return false;
+  } else if (!digitRegex.test(password)) {
+    passwordError.innerHTML = "Password must contain at least one digit.";
+    return false;
+  } else if (!upperCaseRegex.test(password)) {
+    passwordError.innerHTML = "Password must contain at least one uppercase letter.";
+    return false;
+  } else if (!lowerCaseRegex.test(password)) {
+    passwordError.innerHTML = "Password must contain at least one lowercase letter.";
+    return false;
+  } else if (!specialCharRegex.test(password)) {
+    passwordError.innerHTML = "Password must contain at least one special character.";
+    return false;
+  } else if (whiteSpaceRegex.test(password)) {
+    passwordError.innerHTML = "Password cannot contain any whitespace.";
+    return false;
+  }
+
+  // If all requirements are met, return true
+  return true;
+}
+</script>
+
+</body>
+</html>
